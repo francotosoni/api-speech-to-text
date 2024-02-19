@@ -119,12 +119,12 @@ app.post('/stt', async (req, res, err) => {
     const audioData = req.body;
 
     // Get the extension of the audio file
-    const extension = await getBufferFileExtension(audioData);
+    //const extension = await getBufferFileExtension(audioData);
 
     const params = {
       audio: audioData,
       languageCustomizationId: customizationId,
-      contentType: `audio/${extension}`,
+      contentType: `application/octet-stream`,
       model: model,
     };
 
