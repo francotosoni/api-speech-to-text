@@ -115,6 +115,10 @@ speechToText.addWords(addWordsParams)
 // Endpoint to use speech to text, you need to add the audio in binary format in the body.
 app.post('/stt', async (req, res, err) => {
   try {
+
+    // Get the query summarize
+    const summarize = req.query.summarize;
+
     // Get the audio data from the request body
     const audioData = req.body;
 
@@ -135,7 +139,14 @@ app.post('/stt', async (req, res, err) => {
     const transcriptionText = transcriptionResult.result.results.map(result => result.alternatives[0].transcript).join(' ');
 
     await fs.appendFile('logs.txt', transcriptionText + '\n');
-    res.status(200).json({ transcription: transcriptionText });
+
+    if(summarize !== undefined && summarize === "true"){
+      res.status(200).json({transcription: "summarize"});
+    }
+    
+    else{
+      res.status(200).json({ transcription: transcriptionText });
+    }
     
   } catch (error) {
     console.error('Error saving audio file:', error);
