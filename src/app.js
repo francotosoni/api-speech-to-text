@@ -43,18 +43,6 @@ const speechToText = new SpeechToTextV1({
   }),
   serviceUrl: apiUrl,
 });
-
-/*
-const { CloudPakForDataAuthenticator } = require('ibm-watson/auth');
- const speechToText = new SpeechToTextV1({
-   authenticator: new CloudPakForDataAuthenticator({
-     username: '{username}',
-     password: '{password}',
-     url: 'https://{cpd_cluster_host}{:port}',
-  }),
-  serviceUrl: '{url}',
- })
-*/
 /*
 
 * * * * *
